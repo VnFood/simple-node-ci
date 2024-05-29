@@ -23,10 +23,21 @@ jobs:
       - run:
           name: deploy
           command: '#e.g. ./deploy.sh'
+  say-hello:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: "Say hello ne"
+          command: "echo Hello, World! ne"
 workflows:
   build-and-test:
     jobs:
       - test-node
+  say-hello-workflow:
+    jobs:
+      - say-hello
     # - deploy:
     #     requires:
     #       - test-node
